@@ -2,11 +2,12 @@ import time
 import datetime
 from pytz import timezone
 
+# https://www.epochconverter.com/ldap
 def nt_to_unix(nt_timestamp):
     d1 = datetime.datetime(1970,1,1,0,0,0)
     d2 = datetime.datetime(1601,1,1,0,0,0)
     nt_second = (d1 - d2).total_seconds()
-    res = nt_timestamp/10000000 - nt_second
+    res = int(nt_timestamp/10000000 - nt_second)
     return res
     
 def unix_to_nt(unix_timestamp):
